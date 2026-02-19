@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Markdown Cheatsheet — AI Basics">
+  <div class="page">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <div class="series-tag">AI Basics — Issue 01</div>
+        <h1>Markdown<br><em>Cheatsheet</em></h1>
+        <p class="subtitle">Everything you need. Nothing you don't.</p>
+      </div>
+      <div class="header-right">
+        <div class="big-label">Lost In AI Land</div>
+      </div>
+    </div>
+
+    <!-- Headings -->
+    <div class="section-title">Headings</div>
+    <div class="col-labels">
+      <div class="col-label">↳ you type</div>
+      <div class="col-label">↳ renders as</div>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="raw"><span class="sym">#&nbsp;</span><span class="val">Heading 1</span></div>
+          <div class="rendered"><h1r>Heading 1</h1r></div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">##&nbsp;</span><span class="val">Heading 2</span></div>
+          <div class="rendered"><h2r>Heading 2</h2r></div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">###&nbsp;</span><span class="val">Heading 3</span></div>
+          <div class="rendered"><h3r>Heading 3</h3r></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emphasis + Lists -->
+    <div class="grid">
+      <div>
+        <div class="section-title">Emphasis</div>
+        <div class="col-labels">
+          <div class="col-label">↳ you type</div>
+          <div class="col-label">↳ renders as</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="raw"><span class="sym">**</span><span class="val">bold</span><span class="sym">**</span></div>
+              <div class="rendered"><strong>bold</strong></div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="sym">*</span><span class="val">italic</span><span class="sym">*</span></div>
+              <div class="rendered"><em>italic</em></div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="sym">~~</span><span class="val">strikethrough</span><span class="sym">~~</span></div>
+              <div class="rendered"><s>strikethrough</s></div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="sym">`</span><span class="val">inline code</span><span class="sym">`</span></div>
+              <div class="rendered"><code>inline code</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Lists</div>
+        <div class="col-labels">
+          <div class="col-label">↳ you type</div>
+          <div class="col-label">↳ renders as</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="raw" style="flex-direction:column;align-items:flex-start;gap:2px;">
+                <div><span class="sym">- </span><span class="val">Apples</span></div>
+                <div><span class="sym">- </span><span class="val">Oranges</span></div>
+                <div><span class="sym">- </span><span class="val">Bananas</span></div>
+              </div>
+              <div class="rendered">
+                <ul><li>Apples</li><li>Oranges</li><li>Bananas</li></ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="raw" style="flex-direction:column;align-items:flex-start;gap:2px;">
+                <div><span class="sym">1. </span><span class="val">First</span></div>
+                <div><span class="sym">2. </span><span class="val">Second</span></div>
+                <div><span class="sym">3. </span><span class="val">Third</span></div>
+              </div>
+              <div class="rendered">
+                <ol style="padding-left:18px;font-size:13px;"><li>First</li><li>Second</li><li>Third</li></ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link + Blockquote + Divider -->
+    <div class="grid grid-3">
+      <div>
+        <div class="section-title">Link</div>
+        <div class="col-labels">
+          <div class="col-label">↳ you type</div>
+          <div class="col-label">↳ renders</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row" style="flex-direction:column;">
+              <div class="raw" style="font-size:11px;word-break:break-all;"><span class="sym">[</span><span class="val">text</span><span class="sym">](url)</span></div>
+              <div class="rendered" style="padding:10px 14px;"><a href="#">text</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Blockquote</div>
+        <div class="col-labels">
+          <div class="col-label">↳ you type</div>
+          <div class="col-label">↳ renders</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row" style="flex-direction:column;">
+              <div class="raw"><span class="sym">&gt; </span><span class="val">A quote</span></div>
+              <div class="rendered" style="padding:10px 14px;"><blockquote>A quote</blockquote></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Divider</div>
+        <div class="col-labels">
+          <div class="col-label">↳ you type</div>
+          <div class="col-label">↳ renders</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row" style="flex-direction:column;">
+              <div class="raw"><span class="sym">---</span></div>
+              <div class="rendered" style="padding:14px;"><span class="hr-line"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Front Matter -->
+    <div class="section-title" style="margin-top: 8px;">Front Matter — The Hidden Label</div>
+    <div class="fm-card">
+      <div class="fm-header">
+        <span>example.md</span>
+        <span>metadata block · lives at the very top</span>
+      </div>
+      <div class="fm-body">
+        <div><span class="fm-delim">---</span></div>
+        <div><span class="fm-key">title</span>: <span class="fm-val">"What Is a Markdown File?"</span></div>
+        <div><span class="fm-key">author</span>: <span class="fm-val">"Josh"</span></div>
+        <div><span class="fm-key">date</span>: <span class="fm-val">"2025-01-15"</span></div>
+        <div><span class="fm-key">tags</span>: <span class="fm-arr">["basics", "markdown", "AI"]</span></div>
+        <div><span class="fm-key">published</span>: <span class="fm-val">true</span></div>
+        <div><span class="fm-delim">---</span></div>
+      </div>
+    </div>
+    <div class="fm-explainer">
+      <div class="fm-note">
+        <div class="fm-note-key">title / author / date</div>
+        <div class="fm-note-val">Used by publishing platforms to display metadata without reading the full document.</div>
+      </div>
+      <div class="fm-note">
+        <div class="fm-note-key">tags</div>
+        <div class="fm-note-val">How knowledge bases and AI tools categorize and retrieve the file automatically.</div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="section-title" style="margin-top: 28px;">Best Practices</div>
+    <div class="bp-grid">
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>One # for your title only</strong>
+          <p>Use a single H1 at the top. Use ## and ### for everything below it. Hierarchy matters.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't skip heading levels</strong>
+          <p>Jumping from # to ### confuses readers and breaks how AI tools parse your document.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Blank lines between blocks</strong>
+          <p>Put a blank line between paragraphs, lists, and headings. It keeps rendering clean and consistent.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't over-bold</strong>
+          <p>Bold is for the most critical words only. If everything is bold, nothing is.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use front matter for AI files</strong>
+          <p>Any .md file an AI will read benefits from front matter. Title, purpose, and tags help the model understand context before reading a word.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use backticks for anything technical</strong>
+          <p>Wrap file names, commands, and code in `backticks`. It signals to both humans and AI that this is literal text, not prose.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why LLMs Like Markdown -->
+    <div class="section-title" style="margin-top: 28px;">Why LLMs Like Markdown</div>
+    <div class="ai-callout">
+      <div class="ai-icon">🤖</div>
+      <div>
+        <h3>Markdown is the native language of AI instruction</h3>
+        <p>LLMs don't read the way humans do. They process text as a stream of tokens — breaking everything down into chunks and looking for patterns and structure. Markdown gives them exactly that, consistently and predictably.</p>
+      </div>
+    </div>
+
+    <div class="llm-grid">
+      <div class="llm-item">
+        <div class="llm-number">01</div>
+        <div class="llm-content">
+          <strong>Structure is explicit, not implied</strong>
+          <p>A <code>#</code> heading unambiguously signals "this is the most important concept on the page." A bullet point signals "these are discrete, parallel items." The model doesn't have to guess — the structure is built into the syntax.</p>
+        </div>
+      </div>
+      <div class="llm-item">
+        <div class="llm-number">02</div>
+        <div class="llm-content">
+          <strong>Easy to parse, easy to generate</strong>
+          <p>Markdown has almost no ambiguity. There are no nested tags, no style attributes, no closing elements to match. That simplicity means models can both read and write it reliably — which is why every major LLM defaults to Markdown in its responses.</p>
+        </div>
+      </div>
+      <div class="llm-item">
+        <div class="llm-number">03</div>
+        <div class="llm-content">
+          <strong>Skills and system prompts are .md files</strong>
+          <p>When developers build AI tools — including the skill instructions that tell Claude or GPT <em>how</em> to do a specific task — those instructions are written in Markdown. The model reads the headers to understand sections, the bullets to understand rules, and the bold text to understand what's critical.</p>
+        </div>
+      </div>
+      <div class="llm-item">
+        <div class="llm-number">04</div>
+        <div class="llm-content">
+          <strong>Front matter gives context before a single word is read</strong>
+          <p>The metadata block at the top of a <code>.md</code> file tells the model what the document is, who wrote it, and what it's for — before processing any content. It's the difference between handing someone a labelled folder versus a loose stack of papers.</p>
+        </div>
+      </div>
+      <div class="llm-item">
+        <div class="llm-number">05</div>
+        <div class="llm-content">
+          <strong>Your prompts are already Markdown</strong>
+          <p>Every time you use bullet points or headers in a ChatGPT or Claude prompt, you're writing Markdown — and the model is parsing that structure as part of understanding your intent. A well-formatted prompt isn't just easier to read. It's easier for the AI to follow.</p>
+        </div>
+      </div>
+      <div class="llm-item llm-item-accent">
+        <div class="llm-number" style="color: #f0a05a;">→</div>
+        <div class="llm-content">
+          <strong>The bottom line</strong>
+          <p>Markdown became the format of choice for AI not because someone decided it — but because it's the simplest format that gives both humans and machines a shared understanding of structure. That's rare. That's why it won.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">Lost In AI Land</div>
+      <div class="footer-right">AI Basics Series · Issue 01 · lostinai.substack.com</div>
+    </div>
+
+  </div>
+</BaseLayout>
