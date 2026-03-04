@@ -49,6 +49,20 @@ const { title } = Astro.props;
     margin: 0 auto;
   }
 
+  .back-link {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
   /* ── Header ── */
   .header {
     border-bottom: 2px solid var(--ink);
@@ -198,6 +212,7 @@ const { title } = Astro.props;
   .raw .sym { color: #f0a05a; }
   .raw .cmd { color: #6b8fa6; }
   .raw .val { color: var(--code-text); }
+  .raw .cmt { color: #6b8fa6; font-size: 11px; }
 
   .rendered {
     background: var(--render-bg);
@@ -577,6 +592,59 @@ const { title } = Astro.props;
   }
 
   .commit-item p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── BM25 Param Card ── */
+  .param-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .param-header {
+    background: #2a2623;
+    padding: 8px 14px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #6b635a;
+    letter-spacing: 0.06em;
+  }
+
+  .param-body {
+    background: var(--code-bg);
+    padding: 16px 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 2;
+    color: var(--code-text);
+  }
+
+  .param-body .pk { color: #f0a05a; }
+  .param-body .pv { color: #a8cc8c; }
+  .param-body .pc { color: #6b8fa6; }
+
+  .param-explain {
+    background: var(--cream);
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+
+  .param-item strong {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .param-item p {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.5;

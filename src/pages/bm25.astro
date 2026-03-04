@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<!-- AI Basics Cheatsheet Series — Lost In AI Land -->
+<!-- Issue 02: BM25 -->
+
+<BaseLayout title="BM25 Cheatsheet — AI Basics">
+<div class="page">
+  <a href="../" class="back-link">← Back to home</a>
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="series-tag">AI Basics — Issue 02</div>
+      <h1>BM25 — <em>Best Match</em></h1>
+      <div class="subtitle">Everything you need. Nothing you don't.</div>
+    </div>
+    <div class="big-label">Lost In AI Land</div>
+  </div>
+
+  <!-- Core Scoring Components -->
+  <div class="section-title">How BM25 Decides What's Relevant</div>
+  <div style="background:var(--accent-light);border:1px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:12px;font-size:13px;color:var(--ink);line-height:1.6;">
+    🔍 <strong>The scenario:</strong> You search for <em>"sourdough bread"</em> across 1,000 recipe documents. BM25 scores every document on three questions, then ranks them highest to lowest.
+  </div>
+  <div class="col-labels">
+    <div class="col-label">↳ the question BM25 asks</div>
+    <div class="col-label">↳ real-world example</div>
+  </div>
+  <div class="card" style="margin-bottom: 20px;">
+    <div class="card-body">
+      <div class="row">
+        <div class="raw" style="flex-direction:column;align-items:flex-start;gap:3px;">
+          <div><span class="sym">Is this word rare</span></div>
+          <div><span class="val">across all documents?</span></div>
+          <div style="margin-top:4px;"><span class="cmt">↳ Rare = more meaningful</span></div>
+        </div>
+        <div class="rendered" style="flex-direction:column;align-items:flex-start;gap:4px;">
+          <div>"Sourdough" appears in only 12 of 1,000 docs → <strong>big signal</strong></div>
+          <div style="color:var(--muted);font-size:12px;">"The" appears in all 1,000 docs → ignored</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="raw" style="flex-direction:column;align-items:flex-start;gap:3px;">
+          <div><span class="sym">Does this word appear</span></div>
+          <div><span class="val">in this document?</span></div>
+          <div style="margin-top:4px;"><span class="cmt">↳ More = better, up to a point</span></div>
+        </div>
+        <div class="rendered" style="flex-direction:column;align-items:flex-start;gap:4px;">
+          <div>Doc A mentions "sourdough" 8 times → <strong>good score</strong></div>
+          <div style="color:var(--muted);font-size:12px;">Doc B mentions it 80 times → <strong>same score</strong> (there's a ceiling)</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="raw" style="flex-direction:column;align-items:flex-start;gap:3px;">
+          <div><span class="sym">Is this document</span></div>
+          <div><span class="val">unusually long?</span></div>
+          <div style="margin-top:4px;"><span class="cmt">↳ Long docs get adjusted down</span></div>
+        </div>
+        <div class="rendered" style="flex-direction:column;align-items:flex-start;gap:4px;">
+          <div>A 50-page book mentioning "sourdough" once → <strong>penalized</strong></div>
+          <div style="color:var(--muted);font-size:12px;">A focused 1-page recipe mentioning it once → <strong>rewarded</strong></div>
+        </div>
+      </div>
+      <div class="row" style="background:var(--cream);">
+        <div class="raw" style="background:#2a2623;flex-direction:column;align-items:flex-start;gap:3px;">
+          <div><span class="sym">Final score =</span></div>
+          <div><span class="val">rare-word bonus</span></div>
+          <div><span class="val">× capped frequency</span></div>
+          <div><span class="val">÷ length adjustment</span></div>
+        </div>
+        <div class="rendered" style="flex-direction:column;align-items:flex-start;gap:4px;">
+          <strong>Highest score wins.</strong>
+          <div style="color:var(--muted);font-size:12px;margin-top:4px;">BM25 runs this for every word in your query, adds the scores up, and returns a ranked list of documents.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parameters + Saturation side by side -->
+  <div class="grid">
+    <div>
+      <div class="section-title">Two Dials You Can Adjust</div>
+      <div class="col-labels">
+        <div class="col-label">↳ the dial</div>
+        <div class="col-label">↳ what it controls</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="raw"><span class="sym">k1</span> <span class="val">↑ higher</span></div>
+            <div class="rendered">Word frequency matters more — repeated terms keep boosting the score longer</div>
+          </div>
+          <div class="row">
+            <div class="raw"><span class="sym">k1</span> <span class="val">↓ lower</span></div>
+            <div class="rendered">Ceiling kicks in fast — one mention is nearly as good as ten</div>
+          </div>
+          <div class="row">
+            <div class="raw" style="flex-direction:column;align-items:flex-start;gap:6px;">
+              <div><span class="sym">b=</span><span class="val">0.75</span> <span class="cmt">default</span></div>
+              <div><span class="sym">b=</span><span class="val">0</span> <span class="cmt">off</span></div>
+              <div><span class="sym">b=</span><span class="val">1</span> <span class="cmt">full</span></div>
+            </div>
+            <div class="rendered" style="flex-direction:column;align-items:flex-start;gap:6px;">
+              <div>Gently penalize long docs <span style="color:var(--muted);font-size:12px;">(recommended)</span></div>
+              <div>Ignore length entirely</div>
+              <div>Heavily penalize long docs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">BM25 vs TF-IDF</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:6px;font-style:italic;">TF-IDF is an older scoring method BM25 was built to improve on.</div>
+      <div class="col-labels">
+        <div class="col-label">↳ TF-IDF</div>
+        <div class="col-label">↳ BM25</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="raw" style="font-size:11px;"><span class="val">Linear term frequency</span></div>
+            <div class="rendered" style="font-size:12px;">Saturated TF — diminishing returns after threshold</div>
+          </div>
+          <div class="row">
+            <div class="raw" style="font-size:11px;"><span class="val">No length adjustment</span></div>
+            <div class="rendered" style="font-size:12px;">Length normalization built in</div>
+          </div>
+          <div class="row">
+            <div class="raw" style="font-size:11px;"><span class="val">50 mentions = 50× boost</span></div>
+            <div class="rendered" style="font-size:12px;">50 mentions ≈ 5 mentions after saturation</div>
+          </div>
+          <div class="row">
+            <div class="raw" style="font-size:11px;"><span class="val">No tuning params</span></div>
+            <div class="rendered" style="font-size:12px;">k1 and b are tunable per collection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Layer: Term Saturation -->
+  <div class="section-title" style="margin-top: 28px;">The Hidden Layer — The Ceiling Effect</div>
+  <div class="param-card">
+    <div class="param-header">
+      <span>the job resume test</span>
+      <span>why repeating words doesn't help</span>
+    </div>
+    <div class="param-body">
+      <div><span class="pc">You're reviewing resumes. Searching for "Python developer."</span></div>
+      <div>&nbsp;</div>
+      <div><span class="pk">Resume A:</span>  <span class="pv">mentions "Python" 3 times  →  looks relevant</span></div>
+      <div><span class="pk">Resume B:</span>  <span class="pv">mentions "Python" 60 times →  still looks relevant</span></div>
+      <div><span class="pk">           </span>  <span class="pc">                              (not 20× more relevant)</span></div>
+      <div>&nbsp;</div>
+      <div><span class="pc">Old search (TF-IDF):  Resume B scores 20× higher  ← unfair</span></div>
+      <div><span class="pc">BM25:                 Resume B scores ~same as A  ← fair</span></div>
+      <div>&nbsp;</div>
+      <div><span class="pc">BM25 has a built-in ceiling. After a few mentions, extra</span></div>
+      <div><span class="pc">repetition stops boosting the score. One good mention</span></div>
+      <div><span class="pc">counts almost as much as fifty.</span></div>
+    </div>
+    <div class="param-explain">
+      <div class="param-item">
+        <strong>why this matters</strong>
+        <p>Documents can't game rankings by repeating terms. One good mention counts nearly as much as fifty.</p>
+      </div>
+      <div class="param-item">
+        <strong>the analogy</strong>
+        <p>A resume that mentions "Python" in every sentence doesn't make you 50× more confident — BM25 captures that intuition.</p>
+      </div>
+      <div class="param-item">
+        <strong>k1 controls the curve</strong>
+        <p>Lower k1 flattens faster. Higher k1 lets frequency contribute longer before maxing out.</p>
+      </div>
+      <div class="param-item">
+        <strong>why AI relies on it</strong>
+        <p>In hybrid RAG pipelines, BM25 prevents noisy, repetitive docs from dominating retrieval results.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Best Practices -->
+  <div class="section-title">Best Practices</div>
+  <div class="bp-grid">
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>Use BM25 for exact-match queries</strong>
+        <p>Product names, error codes, legal citations, proper nouns — BM25 handles these far better than vector search.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon dont">❌</div>
+      <div class="bp-text">
+        <strong>Don't use BM25 alone for meaning</strong>
+        <p>"Fix my car" won't match documents about "automobile repair." Combine with vector search for semantic coverage.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>Tune k1 and b to your collection</strong>
+        <p>Short documents (tweets, titles) need lower b. Long technical documents often benefit from b around 0.75.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon dont">❌</div>
+      <div class="bp-text">
+        <strong>Don't skip stopword removal</strong>
+        <p>BM25 IDF will naturally downweight "the" and "is," but cleaning your index first saves computation.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>Pair with a fusion algorithm to enable hybrid search</strong>
+        <p>When combining BM25 and vector results, a fusion algorithm like RRF merges the two ranked lists into one. This hybrid search pattern is the standard approach in production RAG pipelines.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon dont">❌</div>
+      <div class="bp-text">
+        <strong>Don't confuse sparse and dense retrieval</strong>
+        <p>BM25 = sparse (word matching). Vectors = dense (meaning matching). Both are needed. Neither replaces the other.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Callout -->
+  <div class="ai-callout">
+    <div class="ai-icon">🤖</div>
+    <div>
+      <h3>Why AI Retrieval Still Runs on BM25</h3>
+      <p>Every serious <strong>RAG (Retrieval-Augmented Generation)</strong> system — the technology that lets AI tools search your documents before answering — uses BM25 as one half of a <strong>hybrid search</strong> pipeline. The other half is vector (semantic) search.</p>
+      <p>Vector search understands meaning but misses exact matches. BM25 catches exact matches but doesn't understand meaning. Together, they cover what either misses alone. The results from both are merged using a method called <strong>Reciprocal Rank Fusion</strong> and passed to the language model as context.</p>
+      <p>BM25 is now native to <strong>Elasticsearch, Weaviate, Qdrant, and Pinecone</strong>. An algorithm from 1994 is a core component of every production AI search stack built in 2025.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">Lost In AI Land</div>
+    <div class="footer-right">AI Basics · Issue 02 · BM25</div>
+  </div>
+
+</div>
+</BaseLayout>

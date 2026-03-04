@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const toSheetPath = (value: string) => `${value.replace(/^\/+|\/+$/g, '')}/`;
+
 const cheatsheets = [
   {
     issue: '01',
@@ -15,6 +17,13 @@ const cheatsheets = [
     subtitle: 'Cheatsheet',
     description: 'Essential commands, branching, commit metadata, and why AI agents live inside Git.',
     href: 'git-cheatsheet',
+  },
+  {
+    issue: '03',
+    title: 'BM25',
+    subtitle: 'Cheatsheet',
+    description: 'How BM25 ranks documents with IDF, saturation, and hybrid search best practices for RAG.',
+    href: 'bm25',
   },
 ];
 ---
@@ -37,7 +46,7 @@ const cheatsheets = [
 
     <div class="sheet-grid">
       {cheatsheets.map((sheet) => (
-        <a href={sheet.href} class="sheet-card">
+        <a href={toSheetPath(sheet.href)} class="sheet-card">
           <div class="sheet-issue">Issue {sheet.issue}</div>
           <div class="sheet-title">
             {sheet.title}<br /><em>{sheet.subtitle}</em>
