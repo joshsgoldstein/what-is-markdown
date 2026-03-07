@@ -2,7 +2,7 @@ name: Deploy Astro to GitHub Pages
 
 on:
   push:
-    branches: [main, claude/get-up-to-speed-k48cM]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
