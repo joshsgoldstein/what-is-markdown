@@ -8,7 +8,6 @@ tags: [basics, markdown, AI]
 author: Josh
 ---
 
-![A robot at a keyboard surrounded by Markdown symbols and AI brain icons](/images/articles/markdown-hero.png)
 
 Generative AI has been exposing technical tools to non-technical humans as fast as I can finish writing this first post. OpenClaw opened the eyes of AI and non-AI users alike to what a trending GitHub repo is — and the need for AI governance and ethics is extremely important.
 
@@ -69,7 +68,7 @@ No special software. No complicated setup. Just symbols.
 
 That's the gist of it.
 
-![Markdown raw vs rendered side by side](/images/articles/markdown-raw-vs-rendered.png)
+![Markdown raw vs rendered side by side](/what-is-markdown/images/articles/markdown-raw-vs-rendered.png)
 
 Same content. Totally different experience. The symbols disappear and you get clean, readable formatting.
 
