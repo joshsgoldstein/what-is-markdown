@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 const siteUrl = 'https://lostinai.land';
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
-const base = import.meta.env.BASE_URL;
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 ---
 
 <!DOCTYPE html>
@@ -43,6 +43,7 @@ const base = import.meta.env.BASE_URL;
       <a href={base} class="nav-brand">Lost In AI Land</a>
       <div class="nav-links">
         <a href={`${base}articles`}>Articles</a>
+        <a href={`${base}tags`}>Tags</a>
         <a href={`${base}cheatsheets`}>Cheatsheets</a>
       </div>
     </nav>
