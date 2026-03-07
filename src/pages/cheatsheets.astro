@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 
 const sheets = [
   {
@@ -17,6 +17,13 @@ const sheets = [
     subtitle: 'Cheatsheet',
     description: 'Essential commands, branching, commit metadata, and why AI agents live inside Git.',
     href: `${base}git-cheatsheet`,
+  },
+  {
+    issue: '03',
+    title: 'BM25',
+    subtitle: 'Cheatsheet',
+    description: 'How BM25 ranks documents with IDF, saturation, and hybrid search best practices for RAG.',
+    href: `${base}bm25`,
   },
 ];
 ---

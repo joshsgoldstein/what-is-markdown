@@ -184,7 +184,20 @@ function formatDate(date: Date) {
 
   .footer-right a:hover { color: var(--accent); }
 
+  .header-left { flex: 1; }
+
+  .big-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.5;
+    white-space: nowrap;
+    text-align: right;
+  }
+
   @media (max-width: 640px) {
+    .header-right { display: none; }
+
     .article-card {
       grid-template-columns: 1fr;
     }
