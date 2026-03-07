@@ -1,8 +1,16 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
 }
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Quick references and field notes for the AI age. From Lost In AI Land.',
+  image = '/images/og-default.jpg',
+} = Astro.props;
+const siteUrl = 'https://lostinai.land';
+const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!DOCTYPE html>
@@ -11,6 +19,20 @@ const { title } = Astro.props;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>

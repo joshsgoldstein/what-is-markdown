@@ -1,0 +1,299 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<BaseLayout
+  title={`${article.data.title} — Lost In AI Land`}
+  description={article.data.description}
+  image={article.data.image}
+>
+  <div class="page">
+
+    <div class="header">
+      <div class="header-left">
+        <a href="/articles" class="back-link">← All Articles</a>
+        <div class="series-tag">Lost In AI Land</div>
+      </div>
+      <div class="header-right">
+        <div class="big-label">Field Notes<br>for the<br>AI Age</div>
+      </div>
+    </div>
+
+    <article class="article">
+
+      {article.data.image && (
+        <div class="hero-image">
+          <img src={article.data.image} alt={article.data.title} />
+        </div>
+      )}
+
+      <div class="article-meta-row">
+        <div class="article-tags">
+          {article.data.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+        <div class="article-dateline">
+          {formatDate(article.data.date)} · {article.data.author}
+        </div>
+      </div>
+
+      <h1 class="article-title">{article.data.title}</h1>
+      {article.data.subtitle && (
+        <p class="article-subtitle">{article.data.subtitle}</p>
+      )}
+
+      <div class="rule"></div>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+    </article>
+
+    <div class="footer">
+      <div class="footer-left">Lost In AI Land</div>
+      <div class="footer-right"><a href="/articles">← Back to Articles</a></div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .back-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .article {
+    max-width: 680px;
+  }
+
+  .hero-image {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+  }
+
+  .hero-image img {
+    width: 100%;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
+  }
+
+  .article-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tag);
+    background: var(--tag-bg);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .article-dateline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .article-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .article-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .rule {
+    height: 2px;
+    background: var(--ink);
+    margin: 28px 0;
+  }
+
+  /* ── Prose ── */
+  .prose {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .prose :global(h2) {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prose :global(h3) {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 28px 0 10px;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 20px;
+  }
+
+  .prose :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 22px;
+    margin-bottom: 20px;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 6px;
+    line-height: 1.65;
+  }
+
+  .prose :global(strong) {
+    font-weight: 600;
+  }
+
+  .prose :global(em) {
+    font-style: italic;
+  }
+
+  .prose :global(a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose :global(a:hover) {
+    opacity: 0.8;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 24px 0;
+    background: var(--accent-light);
+    border-radius: 0 6px 6px 0;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .prose :global(blockquote p) {
+    margin-bottom: 0;
+  }
+
+  .prose :global(code) {
+    background: #f0ece5;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--accent);
+  }
+
+  .prose :global(pre) {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 20px 22px;
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid #2e2b28;
+  }
+
+  .prose :global(pre code) {
+    background: none;
+    padding: 0;
+    color: var(--code-text);
+    font-size: 13px;
+    border-radius: 0;
+  }
+
+  .prose :global(hr) {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 36px 0;
+  }
+
+  .prose :global(img) {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin: 24px 0;
+    display: block;
+  }
+
+  .footer-right a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-right a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .article-title { font-size: 28px; }
+  }
+</style>

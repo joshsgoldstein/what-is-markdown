@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const cheatsheets = [
   {
@@ -17,6 +18,14 @@ const cheatsheets = [
     href: 'git-cheatsheet',
   },
 ];
+
+const recentArticles = (await getCollection('articles'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
 ---
 
 <BaseLayout title="AI Basics — Cheatsheet Series">
@@ -48,9 +57,35 @@ const cheatsheets = [
       ))}
     </div>
 
+    <div class="section-title">Recent Articles</div>
+
+    <div class="article-list">
+      {recentArticles.map((article) => (
+        <a href={`/articles/${article.slug}`} class="article-row">
+          {article.data.image && (
+            <div class="article-thumb">
+              <img src={article.data.image} alt={article.data.title} loading="lazy" />
+            </div>
+          )}
+          <div class="article-info">
+            <div class="article-row-tags">
+              {article.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            <div class="article-row-title">{article.data.title}</div>
+            <div class="article-row-date">{formatDate(article.data.date)}</div>
+          </div>
+          <div class="article-row-cta">Read →</div>
+        </a>
+      ))}
+    </div>
+
+    <a href="/articles" class="all-articles-link">View all articles →</a>
+
     <div class="footer">
       <div class="footer-left">Lost In AI Land</div>
-      <div class="footer-right">AI Basics Series · lostinai.substack.com</div>
+      <div class="footer-right">AI Basics Series · lostinai.land</div>
     </div>
 
   </div>
@@ -123,5 +158,116 @@ const cheatsheets = [
     color: var(--accent);
     letter-spacing: 0.06em;
     margin-top: 4px;
+  }
+
+  /* ── Articles ── */
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 16px;
+  }
+
+  .article-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .article-row:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(201, 79, 42, 0.07);
+  }
+
+  .article-thumb {
+    width: 80px;
+    height: 54px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  .article-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .article-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .article-row-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tag);
+    background: var(--tag-bg);
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  .article-row-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .article-row-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .article-row-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+
+  .all-articles-link {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+  }
+
+  .all-articles-link:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .article-row {
+      grid-template-columns: 64px 1fr;
+    }
+    .article-row-cta { display: none; }
   }
 </style>
