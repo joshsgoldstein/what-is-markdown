@@ -1,0 +1,482 @@
+<!-- AI Basics Cheatsheet Series — Lost In AI Land -->
+<!-- Issue 01: Markdown -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Cheatsheet — AI Basics</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --paper: #faf8f4;
+    --cream: #f2ede4;
+    --accent: #c94f2a;
+    --accent-light: #f5e8e3;
+    --muted: #8a8278;
+    --code-bg: #1c1917;
+    --code-text: #e8e0d4;
+    --border: #ddd8ce;
+    --render-bg: #ffffff;
+    --tag: #2a6b4f;
+    --tag-bg: #e5f2ec;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 48px 24px;
+    min-height: 100vh;
+  }
+
+  .page { max-width: 860px; margin: 0 auto; }
+
+  .header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .series-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tag);
+    background: var(--tag-bg);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  h1 em { color: var(--accent); font-style: italic; }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .big-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 600px) { .grid, .grid-3 { grid-template-columns: 1fr; } }
+
+  .card { background: var(--cream); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .card-body { padding: 0; }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: none; }
+
+  .raw {
+    background: var(--code-bg);
+    padding: 12px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--code-text);
+    border-right: 1px solid #333;
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+  }
+
+  .raw .sym { color: #f0a05a; }
+  .raw .val { color: var(--code-text); }
+
+  .rendered {
+    background: var(--render-bg);
+    padding: 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+  }
+
+  .rendered h1r { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 700; display: block; }
+  .rendered h2r { font-family: 'DM Serif Display', serif; font-size: 18px; font-weight: 700; display: block; }
+  .rendered h3r { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; display: block; }
+  .rendered a { color: var(--accent); text-decoration: underline; }
+  .rendered code { background: #f0ece5; font-family: 'DM Mono', monospace; font-size: 12px; padding: 2px 6px; border-radius: 3px; color: var(--accent); }
+  .rendered blockquote { border-left: 3px solid var(--accent); padding-left: 10px; color: var(--muted); font-style: italic; font-size: 13px; }
+  .rendered ul { list-style: disc; padding-left: 18px; font-size: 13px; }
+  .rendered .hr-line { width: 100%; height: 1px; background: var(--border); display: block; }
+
+  .col-labels { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 4px; padding: 0 2px; }
+  .col-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0 14px; }
+
+  .fm-card { background: var(--code-bg); border-radius: 6px; overflow: hidden; border: 1px solid #333; margin-bottom: 20px; }
+  .fm-header { background: #2a2520; padding: 8px 14px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; display: flex; justify-content: space-between; align-items: center; }
+  .fm-header span { color: #f0a05a; }
+  .fm-body { padding: 16px 20px; font-family: 'DM Mono', monospace; font-size: 13px; line-height: 1.8; color: var(--code-text); }
+  .fm-delim { color: #f0a05a; font-weight: 500; }
+  .fm-key { color: #7ec8a4; }
+  .fm-val { color: #c9a96e; }
+  .fm-arr { color: #9db8f0; }
+
+  .fm-explainer { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .fm-note { background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
+  .fm-note-key { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--tag); font-weight: 500; margin-bottom: 4px; }
+  .fm-note-val { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .bp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .bp-item { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .bp-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .bp-icon.do { background: #e5f2ec; }
+  .bp-icon.dont { background: #fde8e3; }
+  .bp-text strong { font-size: 13px; font-weight: 600; display: block; margin-bottom: 3px; }
+  .bp-text p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  .ai-callout { background: var(--ink); color: #fff; border-radius: 8px; padding: 24px 28px; margin-top: 32px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
+  .ai-icon { font-size: 28px; line-height: 1; margin-top: 2px; }
+  .ai-callout h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: #fff; margin-bottom: 10px; }
+  .ai-callout p { font-size: 13px; color: #b0a898; line-height: 1.7; margin-bottom: 8px; }
+  .ai-callout p:last-child { margin-bottom: 0; }
+  .ai-callout strong { color: #f0a05a; }
+
+  .llm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .llm-grid { grid-template-columns: 1fr; } }
+  .llm-item { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; }
+  .llm-item-accent { background: var(--ink); border-color: var(--ink); grid-column: span 2; }
+  .llm-item-accent strong, .llm-item-accent p { color: #fff; }
+  .llm-item-accent p { color: #b0a898 !important; }
+  .llm-number { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--accent); line-height: 1; flex-shrink: 0; margin-top: 2px; min-width: 28px; }
+  .llm-content strong { font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px; color: var(--ink); }
+  .llm-content p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .llm-content code { background: #f0ece5; font-family: 'DM Mono', monospace; font-size: 11px; padding: 1px 5px; border-radius: 3px; color: var(--accent); }
+
+  .footer { border-top: 1px solid var(--border); margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer-left { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--ink); }
+  .footer-right { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="series-tag">AI Basics — Issue 01</div>
+      <h1>Markdown<br><em>Cheatsheet</em></h1>
+      <p class="subtitle">Everything you need. Nothing you don't.</p>
+    </div>
+    <div class="header-right">
+      <div class="big-label">Lost In AI Land</div>
+    </div>
+  </div>
+
+  <!-- Headings -->
+  <div class="section-title">Headings</div>
+  <div class="col-labels">
+    <div class="col-label">↳ you type</div>
+    <div class="col-label">↳ renders as</div>
+  </div>
+  <div class="card" style="margin-bottom: 20px;">
+    <div class="card-body">
+      <div class="row">
+        <div class="raw"><span class="sym">#&nbsp;</span><span class="val">Heading 1</span></div>
+        <div class="rendered"><h1r>Heading 1</h1r></div>
+      </div>
+      <div class="row">
+        <div class="raw"><span class="sym">##&nbsp;</span><span class="val">Heading 2</span></div>
+        <div class="rendered"><h2r>Heading 2</h2r></div>
+      </div>
+      <div class="row">
+        <div class="raw"><span class="sym">###&nbsp;</span><span class="val">Heading 3</span></div>
+        <div class="rendered"><h3r>Heading 3</h3r></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emphasis + Lists -->
+  <div class="grid">
+    <div>
+      <div class="section-title">Emphasis</div>
+      <div class="col-labels">
+        <div class="col-label">↳ you type</div>
+        <div class="col-label">↳ renders as</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="raw"><span class="sym">**</span><span class="val">bold</span><span class="sym">**</span></div>
+            <div class="rendered"><strong>bold</strong></div>
+          </div>
+          <div class="row">
+            <div class="raw"><span class="sym">*</span><span class="val">italic</span><span class="sym">*</span></div>
+            <div class="rendered"><em>italic</em></div>
+          </div>
+          <div class="row">
+            <div class="raw"><span class="sym">~~</span><span class="val">strikethrough</span><span class="sym">~~</span></div>
+            <div class="rendered"><s>strikethrough</s></div>
+          </div>
+          <div class="row">
+            <div class="raw"><span class="sym">`</span><span class="val">inline code</span><span class="sym">`</span></div>
+            <div class="rendered"><code>inline code</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Lists</div>
+      <div class="col-labels">
+        <div class="col-label">↳ you type</div>
+        <div class="col-label">↳ renders as</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="raw" style="flex-direction:column;align-items:flex-start;gap:2px;">
+              <div><span class="sym">- </span><span class="val">Apples</span></div>
+              <div><span class="sym">- </span><span class="val">Oranges</span></div>
+              <div><span class="sym">- </span><span class="val">Bananas</span></div>
+            </div>
+            <div class="rendered"><ul><li>Apples</li><li>Oranges</li><li>Bananas</li></ul></div>
+          </div>
+          <div class="row">
+            <div class="raw" style="flex-direction:column;align-items:flex-start;gap:2px;">
+              <div><span class="sym">1. </span><span class="val">First</span></div>
+              <div><span class="sym">2. </span><span class="val">Second</span></div>
+              <div><span class="sym">3. </span><span class="val">Third</span></div>
+            </div>
+            <div class="rendered"><ol style="padding-left:18px;font-size:13px;"><li>First</li><li>Second</li><li>Third</li></ol></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link + Blockquote + Divider -->
+  <div class="grid grid-3">
+    <div>
+      <div class="section-title">Link</div>
+      <div class="col-labels">
+        <div class="col-label">↳ you type</div>
+        <div class="col-label">↳ renders</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row" style="flex-direction:column;">
+            <div class="raw" style="font-size:11px;word-break:break-all;"><span class="sym">[</span><span class="val">text</span><span class="sym">](url)</span></div>
+            <div class="rendered" style="padding:10px 14px;"><a href="#">text</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Blockquote</div>
+      <div class="col-labels">
+        <div class="col-label">↳ you type</div>
+        <div class="col-label">↳ renders</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row" style="flex-direction:column;">
+            <div class="raw"><span class="sym">&gt; </span><span class="val">A quote</span></div>
+            <div class="rendered" style="padding:10px 14px;"><blockquote>A quote</blockquote></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Divider</div>
+      <div class="col-labels">
+        <div class="col-label">↳ you type</div>
+        <div class="col-label">↳ renders</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row" style="flex-direction:column;">
+            <div class="raw"><span class="sym">---</span></div>
+            <div class="rendered" style="padding:14px;"><span class="hr-line"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Front Matter -->
+  <div class="section-title" style="margin-top: 8px;">Front Matter — The Hidden Label</div>
+  <div class="fm-card">
+    <div class="fm-header">
+      <span>example.md</span>
+      <span>metadata block · lives at the very top</span>
+    </div>
+    <div class="fm-body">
+      <div><span class="fm-delim">---</span></div>
+      <div><span class="fm-key">title</span>: <span class="fm-val">"What Is a Markdown File?"</span></div>
+      <div><span class="fm-key">author</span>: <span class="fm-val">"Josh"</span></div>
+      <div><span class="fm-key">date</span>: <span class="fm-val">"2025-01-15"</span></div>
+      <div><span class="fm-key">tags</span>: <span class="fm-arr">["basics", "markdown", "AI"]</span></div>
+      <div><span class="fm-key">published</span>: <span class="fm-val">true</span></div>
+      <div><span class="fm-delim">---</span></div>
+    </div>
+  </div>
+  <div class="fm-explainer">
+    <div class="fm-note">
+      <div class="fm-note-key">title / author / date</div>
+      <div class="fm-note-val">Used by publishing platforms to display metadata without reading the full document.</div>
+    </div>
+    <div class="fm-note">
+      <div class="fm-note-key">tags</div>
+      <div class="fm-note-val">How knowledge bases and AI tools categorize and retrieve the file automatically.</div>
+    </div>
+  </div>
+
+  <!-- Best Practices -->
+  <div class="section-title" style="margin-top: 28px;">Best Practices</div>
+  <div class="bp-grid">
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>One # for your title only</strong>
+        <p>Use a single H1 at the top. Use ## and ### for everything below it. Hierarchy matters.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon dont">❌</div>
+      <div class="bp-text">
+        <strong>Don't skip heading levels</strong>
+        <p>Jumping from # to ### confuses readers and breaks how AI tools parse your document.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>Blank lines between blocks</strong>
+        <p>Put a blank line between paragraphs, lists, and headings. It keeps rendering clean and consistent.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon dont">❌</div>
+      <div class="bp-text">
+        <strong>Don't over-bold</strong>
+        <p>Bold is for the most critical words only. If everything is bold, nothing is.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>Use front matter for AI files</strong>
+        <p>Any .md file an AI will read benefits from front matter. Title, purpose, and tags help the model understand context before reading a word.</p>
+      </div>
+    </div>
+    <div class="bp-item">
+      <div class="bp-icon do">✅</div>
+      <div class="bp-text">
+        <strong>Use backticks for anything technical</strong>
+        <p>Wrap file names, commands, and code in `backticks`. It signals to both humans and AI that this is literal text, not prose.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why LLMs Like Markdown -->
+  <div class="section-title" style="margin-top: 28px;">Why LLMs Like Markdown</div>
+  <div class="ai-callout">
+    <div class="ai-icon">🤖</div>
+    <div>
+      <h3>Markdown is the native language of AI instruction</h3>
+      <p>LLMs don't read the way humans do. They process text as a stream of tokens — breaking everything down into chunks and looking for patterns and structure. Markdown gives them exactly that, consistently and predictably.</p>
+    </div>
+  </div>
+  <div class="llm-grid">
+    <div class="llm-item">
+      <div class="llm-number">01</div>
+      <div class="llm-content">
+        <strong>Structure is explicit, not implied</strong>
+        <p>A <code>#</code> heading unambiguously signals "this is the most important concept on the page." A bullet point signals "these are discrete, parallel items." The model doesn't have to guess — the structure is built into the syntax.</p>
+      </div>
+    </div>
+    <div class="llm-item">
+      <div class="llm-number">02</div>
+      <div class="llm-content">
+        <strong>Easy to parse, easy to generate</strong>
+        <p>Markdown has almost no ambiguity. There are no nested tags, no style attributes, no closing elements to match. That simplicity means models can both read and write it reliably — which is why every major LLM defaults to Markdown in its responses.</p>
+      </div>
+    </div>
+    <div class="llm-item">
+      <div class="llm-number">03</div>
+      <div class="llm-content">
+        <strong>Skills and system prompts are .md files</strong>
+        <p>When developers build AI tools — including the skill instructions that tell Claude or GPT <em>how</em> to do a specific task — those instructions are written in Markdown. The model reads the headers to understand sections, the bullets to understand rules, and the bold text to understand what's critical.</p>
+      </div>
+    </div>
+    <div class="llm-item">
+      <div class="llm-number">04</div>
+      <div class="llm-content">
+        <strong>Front matter gives context before a single word is read</strong>
+        <p>The metadata block at the top of a <code>.md</code> file tells the model what the document is, who wrote it, and what it's for — before processing any content. It's the difference between handing someone a labelled folder versus a loose stack of papers.</p>
+      </div>
+    </div>
+    <div class="llm-item">
+      <div class="llm-number">05</div>
+      <div class="llm-content">
+        <strong>Your prompts are already Markdown</strong>
+        <p>Every time you use bullet points or headers in a ChatGPT or Claude prompt, you're writing Markdown — and the model is parsing that structure as part of understanding your intent. A well-formatted prompt isn't just easier to read. It's easier for the AI to follow.</p>
+      </div>
+    </div>
+    <div class="llm-item llm-item-accent">
+      <div class="llm-number" style="color: #f0a05a;">→</div>
+      <div class="llm-content">
+        <strong>The bottom line</strong>
+        <p>Markdown became the format of choice for AI not because someone decided it — but because it's the simplest format that gives both humans and machines a shared understanding of structure. That's rare. That's why it won.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">Lost In AI Land</div>
+    <div class="footer-right">AI Basics Series · Issue 01 · lostinai.substack.com</div>
+  </div>
+
+</div>
+</body>
+</html>

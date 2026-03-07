@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Articles — Lost In AI Land"
+  description="Field notes for the AI age. Plain-language articles on the tools, concepts, and ideas shaping how we work with AI."
+>
+  <div class="page">
+
+    <div class="header">
+      <div class="header-left">
+        <div class="series-tag">Lost In AI Land</div>
+        <h1>Field<br><em>Notes</em></h1>
+        <p class="subtitle">Plain-language articles on AI tools and concepts.</p>
+      </div>
+      <div class="header-right">
+        <div class="big-label">For the<br>AI Age</div>
+      </div>
+    </div>
+
+    <div class="section-title">All Articles</div>
+
+    <div class="article-list">
+      {articles.map((article) => (
+        <a href={`/articles/${article.slug}`} class="article-card">
+          {article.data.image && (
+            <div class="article-image">
+              <img src={article.data.image} alt={article.data.title} loading="lazy" />
+            </div>
+          )}
+          <div class="article-body">
+            <div class="article-tags">
+              {article.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            <div class="article-title">{article.data.title}</div>
+            {article.data.subtitle && (
+              <p class="article-subtitle">{article.data.subtitle}</p>
+            )}
+            <p class="article-desc">{article.data.description}</p>
+            <div class="article-meta">
+              <span>{formatDate(article.data.date)}</span>
+              <span class="article-cta">Read →</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="footer">
+      <div class="footer-left">Lost In AI Land</div>
+      <div class="footer-right"><a href="/">← Cheatsheets</a></div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .article-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .article-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px rgba(201, 79, 42, 0.08);
+  }
+
+  .article-image {
+    overflow: hidden;
+    background: var(--border);
+  }
+
+  .article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .article-body {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tag);
+    background: var(--tag-bg);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .article-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .article-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .article-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+
+  .article-cta {
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  .footer-right a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-right a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .article-card {
+      grid-template-columns: 1fr;
+    }
+
+    .article-image {
+      height: 200px;
+    }
+  }
+</style>
