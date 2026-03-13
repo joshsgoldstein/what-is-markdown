@@ -123,6 +123,7 @@ The entire Unix philosophy — small composable commands, piped between tools, o
 
 ## How to Learn
 
+- [CLI Cheatsheet](/what-is-markdown/cli-cheatsheet) — quick-reference guide covering OS basics, product CLIs, pipes, and best practices
 - [Codecademy — Learn the Command Line](https://www.codecademy.com/learn/learn-the-command-line) — interactive, beginner-friendly course that walks you through navigation, file manipulation, and redirection
 - [freeCodeCamp — Command Line for Beginners](https://www.freecodecamp.org/news/command-line-for-beginners/) — comprehensive free handbook covering terminals, shells, and essential commands
 - [DataCamp — Bash & zsh Shell Terminal Basics Cheat Sheet](https://www.datacamp.com/cheat-sheet/bash-and-zsh-shell-terminal-basics-cheat-sheet) — downloadable quick-reference for the most common shell commands and shortcuts
