@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+---
+
+<BaseLayout title="CLI Cheatsheet — AI Basics">
+  <div class="page">
+    <a href={`${base}cheatsheets`} class="back-link">← All Cheatsheets</a>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <div class="series-tag">AI Basics — Issue 04</div>
+        <h1>CLI<br><em>Cheatsheet</em></h1>
+        <p class="subtitle">Everything you need. Nothing you don't.</p>
+      </div>
+      <div class="header-right">
+        <div class="big-label">Lost In AI Land</div>
+      </div>
+    </div>
+
+    <!-- The Basics -->
+    <div class="section-title">The Basics — Your Operating System</div>
+    <div class="col-labels">
+      <div class="col-label">↳ you type</div>
+      <div class="col-label">↳ what it does</div>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="raw"><span class="sym">ls</span></div>
+          <div class="rendered">Lists files and folders in the current directory</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">cd </span><span class="val">folder-name</span></div>
+          <div class="rendered">Moves into the specified folder</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">mkdir </span><span class="val">new-project</span></div>
+          <div class="rendered">Creates a new folder</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Wrapper Pattern — Product CLIs -->
+    <div class="section-title">The Wrapper Pattern — Product CLIs</div>
+    <div class="col-labels">
+      <div class="col-label">↳ you type</div>
+      <div class="col-label">↳ what it does</div>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="raw"><span class="sym">vercel </span><span class="val">deploy</span></div>
+          <div class="rendered">Deploys your website (Vercel)</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">gh </span><span class="val">pr create</span></div>
+          <div class="rendered">Opens a pull request (GitHub)</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">aws </span><span class="val">s3 ls</span></div>
+          <div class="rendered">Lists your cloud storage buckets (AWS)</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="sym">stripe </span><span class="val">subscriptions list</span></div>
+          <div class="rendered">Lists active subscriptions (Stripe)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Workspace CLI -->
+    <div class="section-title">Google Workspace CLI — gws in Action (March 2026)</div>
+    <div class="col-labels">
+      <div class="col-label">↳ you type</div>
+      <div class="col-label">↳ what it does</div>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="raw" style="font-size:11px;"><span class="sym">gws </span><span class="val">drive files list</span> <span class="sym">--params</span> <span class="val">'{`{"pageSize":5}`}'</span></div>
+          <div class="rendered">Lists your 5 most recent Drive files</div>
+        </div>
+        <div class="row">
+          <div class="raw" style="font-size:11px;"><span class="sym">gws </span><span class="val">sheets spreadsheets create</span> <span class="sym">--json</span> <span class="val">'{`{"properties":{"title":"Q1 Budget"}}`}'</span></div>
+          <div class="rendered">Creates a new Google Sheet</div>
+        </div>
+        <div class="row">
+          <div class="raw" style="font-size:11px;"><span class="sym">gws </span><span class="val">gmail users messages list</span> <span class="sym">--params</span> <span class="val">'{`{"maxResults":3}`}'</span></div>
+          <div class="rendered">Pulls your 3 latest emails</div>
+        </div>
+        <div class="row">
+          <div class="raw" style="font-size:11px;"><span class="sym">gws </span><span class="val">schema</span> <span class="val">drive.files.list</span></div>
+          <div class="rendered">Shows the API schema (agents read this)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipes — The Hidden Layer -->
+    <div class="section-title">Pipes — The Hidden Layer</div>
+    <div class="fm-card">
+      <div class="fm-header">
+        <span>terminal</span>
+        <span>chaining commands with the pipe operator</span>
+      </div>
+      <div class="fm-body">
+        <div><span class="fm-key">$</span> <span class="fm-val">gws drive files list</span> <span class="fm-type">--page-all</span> <span class="fm-type">|</span> <span class="fm-val">jq -r '.files[].name'</span></div>
+        <div style="margin-top:4px;"><span class="fm-delim">Q1 Budget.xlsx</span></div>
+        <div><span class="fm-delim">Meeting Notes.docx</span></div>
+        <div><span class="fm-delim">Logo Final.png</span></div>
+        <div><span class="fm-delim">...</span></div>
+      </div>
+      <div class="fm-explanation">
+        <div class="fm-item">
+          <strong>gws drive files list</strong>
+          <p>Fetches all files from Google Drive as structured JSON, paginating automatically.</p>
+        </div>
+        <div class="fm-item">
+          <strong>| (pipe)</strong>
+          <p>Takes the output of the left command and feeds it as input to the right command.</p>
+        </div>
+        <div class="fm-item">
+          <strong>jq -r '.files[].name'</strong>
+          <p>Extracts just the file names from the JSON. One tool fetches, one tool filters.</p>
+        </div>
+        <div class="fm-item">
+          <strong>Why it matters</strong>
+          <p>Two small tools, chained together. The Unix philosophy: do one thing well, pass results forward.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="section-title">Best Practices</div>
+    <div class="bp-grid">
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use tab completion</strong>
+          <p>Start typing a command or file name and press Tab. The shell auto-completes it, saving time and avoiding typos.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't paste unknown commands</strong>
+          <p>Malicious commands can look harmless. Always read and understand a command before running it in your terminal.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use --dry-run when available</strong>
+          <p>Many product CLIs (including gws) let you preview what a command will do before it actually runs.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't ignore JSON output</strong>
+          <p>Product CLIs return structured JSON by design. Pipe it to <code style="background:#f0ece5;font-family:'DM Mono',monospace;font-size:11px;padding:2px 5px;border-radius:3px;color:var(--accent);">jq</code> to filter exactly what you need.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use the up arrow for history</strong>
+          <p>Press ↑ to scroll through previous commands. No need to retype long commands — just recall and edit.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't skip --help</strong>
+          <p>Every good CLI supports <code style="background:#f0ece5;font-family:'DM Mono',monospace;font-size:11px;padding:2px 5px;border-radius:3px;color:var(--accent);">--help</code> on every command. Read it before guessing at flags.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Callout -->
+    <div class="ai-callout">
+      <div class="ai-icon">🤖</div>
+      <div>
+        <h3>Why AI Agents Live in the Terminal</h3>
+        <p><strong>Text in, text out</strong> — that's the entire interface of a CLI, and it's also the native format of every large language model. AI agents don't need to interpret pixels or hover states. They read and write text.</p>
+        <p>Google's <strong>gws</strong> CLI was designed agent-first: structured JSON output, runtime schema introspection via <code style="color:#f0a05a;">gws schema</code>, and 100+ built-in agent skills. The tool's creator argued that <strong>"the primary consumer of your CLI is no longer a human."</strong></p>
+        <p>The same interface humans used to talk to mainframes in 1961 is now <strong>the ideal interface for autonomous AI</strong> — because conversations are exactly what language models are built for.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">Lost In AI Land</div>
+      <div class="footer-right">AI Basics · Issue 04 · CLI</div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .sym { color: #f0a05a; }
+  .bp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .bp-item {
+    background: var(--render-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .bp-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .bp-icon.do { background: #e5f2ec; }
+  .bp-icon.dont { background: #fde8e3; }
+  .bp-text strong { font-size: 13px; font-weight: 600; display: block; margin-bottom: 3px; }
+  .bp-text p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+</style>
