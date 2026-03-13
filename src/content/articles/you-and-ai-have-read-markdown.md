@@ -147,7 +147,7 @@ If you ever give an AI a task in writing, you're thinking in Markdown already. B
 
 ## How Can I Learn?
 
-- [Markdown Cheatsheet](/markdown-cheatsheet) — start here
+- [Markdown Cheatsheet](/what-is-markdown/markdown-cheatsheet) — start here
 - [DataCamp's Markdown Cheat Sheet](https://www.datacamp.com/cheat-sheet/markdown-cheat-sheet-23) — solid reference
 - [Anthropic Documentation: How to create custom Skills](https://docs.anthropic.com) — for when you're ready
 

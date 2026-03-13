@@ -103,7 +103,7 @@ If you've ever opened a pull request, accepted a suggested change in GitHub, or 
 - [Pro Git (free)](https://git-scm.com/book) — the official book, available online in full
 - [GitHub's Git Guides](https://github.com/git-guides) — short, practical, concept-by-concept
 - [Oh My Git!](https://ohmygit.org/) — a game that teaches Git by playing it
-- [Git Cheatsheet](/git-cheatsheet) — start here for quick reference
+- [Git Cheatsheet](/what-is-markdown/git-cheatsheet) — start here for quick reference
 
 ---
 
