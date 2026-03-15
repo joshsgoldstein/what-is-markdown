@@ -28,6 +28,8 @@ In fact, you've read and written something in Markdown today without even knowin
 
 > It's everywhere. And it takes about ten minutes to understand.
 
+> Want the quick reference? Jump to the [Markdown Cheatsheet →](/what-is-markdown/markdown-cheatsheet)
+
 ---
 
 ## Where It Came From

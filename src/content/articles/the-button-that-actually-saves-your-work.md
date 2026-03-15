@@ -16,6 +16,8 @@ Not as a nice-to-have. As the foundation. As the thing that makes autonomous AI 
 
 Which raises a question most people never stop to ask: what actually is Git? And why does every AI coding agent in 2025 depend on a tool that was written in 2005 by one person, in roughly a week?
 
+> Want the quick reference? Jump to the [Git Cheatsheet →](/what-is-markdown/git-cheatsheet)
+
 ---
 
 ## Where It Came From
@@ -100,10 +102,10 @@ If you've ever opened a pull request, accepted a suggested change in GitHub, or 
 
 ## How to Learn
 
+- [Git Cheatsheet — Lost In AI Land](/what-is-markdown/git-cheatsheet) — Commands, branching, commit anatomy, and why AI agents live inside Git
 - [Pro Git (free)](https://git-scm.com/book) — the official book, available online in full
 - [GitHub's Git Guides](https://github.com/git-guides) — short, practical, concept-by-concept
 - [Oh My Git!](https://ohmygit.org/) — a game that teaches Git by playing it
-- [Git Cheatsheet](/what-is-markdown/git-cheatsheet) — start here for quick reference
 
 ---
 

@@ -1,0 +1,363 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+---
+
+<BaseLayout title="Docker Cheatsheet — AI Basics">
+  <div class="page">
+    <a href={`${base}cheatsheets`} class="back-link">← All Cheatsheets</a>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <div class="series-tag">AI Basics · Issue 05</div>
+        <h1>Docker<br><em>Cheatsheet</em></h1>
+        <p class="subtitle">The containerization platform that makes "works on my machine" obsolete</p>
+      </div>
+      <div class="header-right">
+        <div class="big-label">One command.<br>Isolated environment.<br>Runs anywhere.</div>
+      </div>
+    </div>
+
+    <!-- Essential Commands -->
+    <div class="section-title">Essential Commands</div>
+    <div class="col-labels">
+      <div class="col-label">↳ command</div>
+      <div class="col-label">↳ what it does</div>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="raw"><span class="cmd">docker --version</span></div>
+          <div class="rendered">Shows installed Docker version</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker pull</span>&nbsp;<span class="val">postgres</span></div>
+          <div class="rendered">Downloads the PostgreSQL image from Docker Hub</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker images</span></div>
+          <div class="rendered">Lists all Docker images on your machine</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker ps</span></div>
+          <div class="rendered">Shows all running containers</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker ps</span>&nbsp;<span class="val">-a</span></div>
+          <div class="rendered">Shows all containers (running + stopped)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Running + Managing Containers -->
+    <div class="grid">
+      <div>
+        <div class="section-title">Running Containers</div>
+        <div class="col-labels">
+          <div class="col-label">↳ command</div>
+          <div class="col-label">↳ what it does</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="raw"><span class="cmd">docker run</span>&nbsp;<span class="val">nginx</span></div>
+              <div class="rendered">Starts an nginx container</div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="cmd">docker run</span>&nbsp;<span class="val">-d nginx</span></div>
+              <div class="rendered">Runs nginx in background (detached)</div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="cmd">docker run</span>&nbsp;<span class="val">-p 8080:80</span></div>
+              <div class="rendered">Maps port 8080 (your machine) to port 80 (container)</div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="cmd">docker run</span>&nbsp;<span class="val">--name myapp</span></div>
+              <div class="rendered">Gives the container a custom name</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">Managing Containers</div>
+        <div class="col-labels">
+          <div class="col-label">↳ command</div>
+          <div class="col-label">↳ what it does</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="raw"><span class="cmd">docker stop</span>&nbsp;<span class="val">myapp</span></div>
+              <div class="rendered">Stops a running container</div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="cmd">docker start</span>&nbsp;<span class="val">myapp</span></div>
+              <div class="rendered">Starts a stopped container</div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="cmd">docker rm</span>&nbsp;<span class="val">myapp</span></div>
+              <div class="rendered">Deletes a stopped container</div>
+            </div>
+            <div class="row">
+              <div class="raw"><span class="cmd">docker logs</span>&nbsp;<span class="val">myapp</span></div>
+              <div class="rendered">Shows container output/error logs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Building Images -->
+    <div class="section-title">Building Images</div>
+    <div class="col-labels">
+      <div class="col-label">↳ command</div>
+      <div class="col-label">↳ what it does</div>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="raw"><span class="cmd">docker build</span>&nbsp;<span class="val">-t myapp .</span></div>
+          <div class="rendered">Builds an image named "myapp" from current directory's Dockerfile</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker rmi</span>&nbsp;<span class="val">myapp</span></div>
+          <div class="rendered">Removes/deletes an image</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker compose up</span></div>
+          <div class="rendered">Starts all services defined in docker-compose.yml</div>
+        </div>
+        <div class="row">
+          <div class="raw"><span class="cmd">docker compose down</span></div>
+          <div class="rendered">Stops and removes all containers from docker-compose.yml</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dockerfile Example -->
+    <div class="section-title">Dockerfile — The Blueprint</div>
+    <div class="df-card">
+      <div class="df-header">
+        <span>Dockerfile</span>
+        <span>defines what goes in your container</span>
+      </div>
+      <div class="df-body">
+        <div><span class="df-inst">FROM</span> <span class="df-arg">python:3.11</span></div>
+        <div><span class="df-inst">WORKDIR</span> <span class="df-arg">/app</span></div>
+        <div><span class="df-inst">COPY</span> <span class="df-arg">requirements.txt .</span></div>
+        <div><span class="df-inst">RUN</span> <span class="df-val">pip install -r requirements.txt</span></div>
+        <div><span class="df-inst">COPY</span> <span class="df-arg">. .</span></div>
+        <div><span class="df-inst">CMD</span> <span class="df-val">["python", "app.py"]</span></div>
+      </div>
+      <div class="df-explanation">
+        <div class="df-item">
+          <strong>FROM</strong>
+          <p>Base image to start from — like choosing which OS and software versions you need</p>
+        </div>
+        <div class="df-item">
+          <strong>WORKDIR</strong>
+          <p>Sets the working directory inside the container where commands will run</p>
+        </div>
+        <div class="df-item">
+          <strong>COPY</strong>
+          <p>Copies files from your machine into the container</p>
+        </div>
+        <div class="df-item">
+          <strong>RUN</strong>
+          <p>Executes commands during the build process (like installing dependencies)</p>
+        </div>
+        <div class="df-item">
+          <strong>CMD</strong>
+          <p>The command that runs when the container starts — your app's entry point</p>
+        </div>
+        <div class="df-item">
+          <strong>How it works</strong>
+          <p>Build once with <code>docker build</code>, then run anywhere with <code>docker run</code></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glossary -->
+    <div class="section-title">Glossary</div>
+    <div class="df-card" style="margin-bottom: 28px;">
+      <div class="df-explanation" style="grid-template-columns: 1fr;">
+        <div class="df-item">
+          <strong>Container</strong>
+          <p>A running instance of an image. It's an isolated environment where your application executes with everything it needs bundled inside.</p>
+        </div>
+        <div class="df-item">
+          <strong>Image</strong>
+          <p>A read-only template containing your application code, libraries, and dependencies. The blueprint Docker uses to create containers.</p>
+        </div>
+        <div class="df-item">
+          <strong>Dockerfile</strong>
+          <p>A text file with instructions for building a Docker image. Defines the base image, dependencies to install, files to copy, and commands to run.</p>
+        </div>
+        <div class="df-item">
+          <strong>Docker Hub</strong>
+          <p>A public registry where developers share pre-built Docker images. Think of it as npm or PyPI, but for containers.</p>
+        </div>
+        <div class="df-item">
+          <strong>Docker Compose</strong>
+          <p>A tool for defining and running multi-container applications. One YAML file describes your entire stack — all services, networks, and volumes.</p>
+        </div>
+        <div class="df-item">
+          <strong>Volume</strong>
+          <p>Persistent storage for containers. Data in volumes survives even when containers are deleted — crucial for databases and user files.</p>
+        </div>
+        <div class="df-item">
+          <strong>Port Mapping</strong>
+          <p>Connecting a port on your machine to a port inside the container. Example: <code>-p 8080:80</code> means "localhost:8080 on my machine reaches port 80 inside the container."</p>
+        </div>
+        <div class="df-item">
+          <strong>Docker Engine</strong>
+          <p>The core software that runs and manages containers on your machine. Includes the Docker daemon (background service) and CLI (command-line tool).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="section-title">Best Practices</div>
+    <div class="bp-grid">
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use .dockerignore</strong>
+          <p>Prevent copying unnecessary files (node_modules, .git) into your image. Keeps builds fast.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't run as root</strong>
+          <p>Create a non-root user in your Dockerfile. Security best practice for production containers.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Tag your images with versions</strong>
+          <p>Use <code>myapp:v1.2</code> instead of <code>myapp:latest</code>. Makes rollbacks possible.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't install unnecessary packages</strong>
+          <p>Smaller images = faster builds and deploys. Only install what you actually need.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon do">✅</div>
+        <div class="bp-text">
+          <strong>Use multi-stage builds</strong>
+          <p>Build your app in one stage, copy only the final artifact to a smaller runtime image.</p>
+        </div>
+      </div>
+      <div class="bp-item">
+        <div class="bp-icon dont">❌</div>
+        <div class="bp-text">
+          <strong>Don't store secrets in images</strong>
+          <p>Use environment variables or secret management tools. Never bake API keys into Dockerfiles.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Callout -->
+    <div class="ai-callout">
+      <div class="ai-icon">🤖</div>
+      <div>
+        <h3>Why AI Agents Need Docker</h3>
+        <p><strong>Isolation is safety.</strong> When an AI agent writes code, installs packages, or modifies files, you don't want that happening on your actual computer. Docker creates a sandbox where the agent can work freely — if something breaks, the container gets thrown away and rebuilt.</p>
+        <p><strong>Modern AI architectures are multi-agent teams.</strong> A root agent delegates to sub-agents — one for design, one for code, one for testing. Each runs in its own Docker container with exactly the tools it needs. Docker Compose defines the whole team in one file: the models they use, the tools they access, how they communicate.</p>
+        <p><strong>94% of organizations use containers in their AI workflows</strong> because the same Docker setup that works on your laptop works identically in production. When an AI coding assistant runs tests, deploys an app, or spins up a database, it's using Docker to ensure consistent environments across every step.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">Lost In AI Land</div>
+      <div class="footer-right">AI Basics · Issue 05 · Docker</div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .header {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .big-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    line-height: 1.3;
+    text-align: right;
+    color: var(--muted);
+  }
+
+  /* ── Dockerfile card ── */
+  .df-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .df-header {
+    background: #2a2623;
+    padding: 8px 14px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #6b635a;
+    letter-spacing: 0.06em;
+  }
+
+  .df-body {
+    background: var(--code-bg);
+    padding: 16px 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--code-text);
+  }
+
+  .df-inst { color: #6b8fa6; }
+  .df-arg  { color: #f0a05a; }
+  .df-val  { color: #a8cc8c; }
+
+  .df-explanation {
+    background: var(--cream);
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+
+  .df-item strong {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .df-item p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .df-item code {
+    background: #f0ece5;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--accent);
+  }
+</style>
