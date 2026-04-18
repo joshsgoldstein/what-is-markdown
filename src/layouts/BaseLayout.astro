@@ -9,9 +9,11 @@ const {
   description = 'Field notes for the AI age. From Lost In AI Land.',
   image = '/images/og-default.png',
 } = Astro.props;
-const siteUrl = 'https://joshsgoldstein.github.io/what-is-markdown';
-const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://joshsgoldstein.github.io';
+const siteUrl = `${siteOrigin}${base.replace(/\/$/, '')}`;
+const canonicalUrl = new URL(Astro.url.pathname, `${siteOrigin}`).href;
+const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!DOCTYPE html>
@@ -21,11 +23,13 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalUrl} />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Card -->
@@ -34,6 +38,7 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
 
+  <link rel="alternate" type="application/rss+xml" title="Lost In AI Land" href={`${siteUrl}/rss.xml`} />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
