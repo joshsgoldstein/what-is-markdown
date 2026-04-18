@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
+const TAGS = ['basics', 'markdown', 'git', 'CLI', 'Docker', 'AI'] as const;
+
 const articles = defineCollection({
   type: 'content',
   schema: z.object({
@@ -8,7 +10,7 @@ const articles = defineCollection({
     description: z.string(),
     date: z.date(),
     image: z.string().optional(),
-    tags: z.array(z.string()).default([]),
+    tags: z.array(z.enum(TAGS)).default([]),
     author: z.string().default('Josh'),
   }),
 });
