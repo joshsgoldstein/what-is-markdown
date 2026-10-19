@@ -3,7 +3,7 @@ title: "The Oldest Interface Is Having Its Biggest Moment"
 subtitle: "An overview of what a CLI is and why the blinking cursor never actually went away"
 description: "AI agents are running wild in 2026, and they all share one surprising trait: no mouse. No buttons. Just text. Here's what a CLI actually is, where it came from, and why the oldest way of talking to a computer keeps showing up in the newest technology on the planet."
 date: 2026-03-13
-image: /images/articles/cli-hero.png
+image: /images/articles/cli-hero.svg
 tags: [basics, CLI, AI]
 author: Josh
 ---

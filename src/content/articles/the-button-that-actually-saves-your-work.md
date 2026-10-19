@@ -3,7 +3,7 @@ title: "The Button That Actually Saves Your Work"
 subtitle: "An overview of what Git is and why the commit is the new Ctrl+S"
 description: "Every AI coding agent in 2025 depends on a tool written in 2005 by one person, in roughly a week. Here's what Git actually is, how it works, and why it's become the accountability layer for autonomous AI development."
 date: 2026-02-14
-image: /images/articles/git-hero.png
+image: /images/articles/git-hero.svg
 tags: [basics, git, AI]
 author: Josh
 ---
