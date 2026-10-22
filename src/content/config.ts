@@ -8,6 +8,7 @@ const articles = defineCollection({
     description: z.string(),
     date: z.date(),
     image: z.string().optional(),
+    imagePrompt: z.string().optional(),
     tags: z.array(z.string()).default([]),
     author: z.string().default('Josh'),
   }),

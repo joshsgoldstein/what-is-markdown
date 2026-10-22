@@ -1,0 +1,76 @@
+{
+  "provenance": {
+    "creator": "Josh Goldstein",
+    "article": "src/content/articles/you-and-ai-have-been-shipping-together.md",
+    "reference_image": "public/images/articles/docker-hero.png",
+    "usage": "Use the reference image alongside this prompt for the closest match. Text-only generation will vary."
+  },
+  "image_description": {
+    "scene_summary": "A friendly green cartoon T. rex carrying a developer backpack steps out of an open blue Docker shipping container at a busy seaport. A small glowing turquoise AI triceratops companion floats beside him. The visual metaphor is developers and AI agents shipping software together inside portable containers.",
+    "subjects": [
+      {
+        "character": "Developer dinosaur",
+        "species": "Tyrannosaurus Rex",
+        "style": "Friendly rounded cartoon anatomy, large expressive brown eyes, short arms, broad smiling snout, small white teeth, thick tapering tail and cream claws.",
+        "color": "Leaf-green skin with darker green spots and a creamy golden-yellow jaw, belly and tail underside.",
+        "outfit": "Blue baseball cap with a small white Docker whale emblem. Dark navy and gray backpack with three colorful rectangular badges: yellow lightning bolt, cyan code brackets and purple gears.",
+        "position": "Left of center, full body, stepping across the threshold of the open container toward the viewer and left.",
+        "action": "One hand raised in a friendly explanatory gesture; the other holds a backpack shoulder strap.",
+        "expression": "Warm, confident, open-mouthed smile."
+      },
+      {
+        "character": "AI companion",
+        "species": "Baby Triceratops",
+        "style": "Cute small floating holographic dinosaur; oversized head and scalloped frill, three ivory horns, large dark eyes, small dangling feet and a curling tail.",
+        "color": "Translucent turquoise and mint with luminous cyan edges and printed circuit traces across the face, frill, body and tail.",
+        "outfit": "Dark headset with microphone boom.",
+        "position": "Right of center, hovering beside the T. rex in front of the container wall.",
+        "action": "Floating at shoulder height amid tiny luminous pixel fragments and vertical data streaks.",
+        "expression": "Happy, eager, open-mouthed smile."
+      }
+    ],
+    "background": {
+      "setting": "Container shipping port beside a calm ocean at sunrise or sunset.",
+      "main_container": "Large saturated blue corrugated-steel shipping container in three-quarter perspective. Open left door faces the viewer. Interior holds stacked tan crates and a small green box. The broad right exterior wall displays Docker branding.",
+      "elements": [
+        "Cargo ship bow at left behind the quay.",
+        "Low sun near the left ocean horizon with yellow rays and turquoise water reflections.",
+        "Small white seagulls and soft cream clouds.",
+        "Stacked blue, orange and teal cargo containers carrying simplified AI, Python, JS and gear marks.",
+        "Large blue gantry crane spanning the upper-right sky."
+      ],
+      "lighting": "Warm golden light from the left horizon contrasted with cool blue container shadows and cyan holographic glow.",
+      "atmosphere": "Optimistic, playful, approachable and busy, with a clear educational metaphor."
+    },
+    "text_content": [
+      {
+        "content": "docker",
+        "position": "Large white lowercase lettering on the right container wall beneath the white Docker whale-and-stacked-containers emblem.",
+        "style": "Rounded simple sans-serif, aligned to the perspective of the container."
+      },
+      {
+        "content": "DOCKER: SHIPPING AI AGENTS.\nYOU & AI SHIPPING TOGETHER.",
+        "position": "Smaller white uppercase text below the docker wordmark on the right container wall.",
+        "style": "Condensed bold sans-serif, aligned to the corrugated wall perspective."
+      },
+      {
+        "content": "YOU AND AI HAVE BEEN SHIPPING TOGETHER —\nYOU JUST DON’T REALIZE IT.",
+        "position": "Two centered lines across the bottom fifth of the composition, in a dark navy vignette beneath the scene.",
+        "style": "Large rounded uppercase letters with dark outlines. First line pale cyan, second line pale yellow transitioning to mint. Subtle cyan glow, short luminous horizontal rules and a few small four-point sparkles."
+      }
+    ],
+    "style_parameters": {
+      "aesthetic": "Polished 2D editorial cartoon with bold dark navy outlines, smooth cel shading, softly modeled dimensional forms and lightly textured surfaces. Match the existing Docker illustration rather than the high-fidelity 3D rendering of the city-scene prompt.",
+      "visual_tone": "Vibrant blue and teal industrial setting, warm green-and-yellow protagonist, cyan holographic companion and golden horizon.",
+      "composition": "Landscape, approximately 1.83:1 aspect ratio, matching the 2048 by 1117 reference. Strong central container, T. rex on the left, companion near the middle-right, crane above right, ocean opening at left. Keep the lower title band clear of the characters.",
+      "camera_angle": "Eye-level wide shot with the main dinosaur visible head to toe and a three-quarter view into the container.",
+      "avoid": [
+        "Photorealism or glossy plastic 3D rendering.",
+        "Two T. rexes, an orange dinosaur, tropical drinks or a city street from the separate city-scene prompt.",
+        "Scary dinosaurs, aggressive teeth or threatening expressions.",
+        "Generic abstract AI artwork in place of the recognizable port and Docker container.",
+        "Clipping the feet, cap, frill or bottom headline."
+      ]
+    }
+  }
+}

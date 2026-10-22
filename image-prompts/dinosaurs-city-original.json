@@ -1,0 +1,43 @@
+{
+  "image_description": {
+    "scene_summary": "Two 3D cartoon Tyrannosaurus Rex dinosaurs standing on a bustling city street, holding tropical slushy drinks, with a floating neon sign above them.",
+    "text_content": {
+      "content": "LOSTINAI LAND",
+      "style": "3D bubble letters with a neon gradient (blue to purple) and a glowing outline",
+      "position": "Centered at the top of the frame, suspended above the street"
+    },
+    "subjects": [
+      {
+        "character": "Dinosaur 1 (Left)",
+        "species": "Tyrannosaurus Rex",
+        "style": "Friendly, rounded, high-fidelity 3D cartoon",
+        "color": "Bright green skin with a creamy yellow underbelly",
+        "action": "Holding a red frozen drink with an orange slice garnish in the right hand; giving a thumbs-up with the left hand",
+        "expression": "Happy, open-mouthed smile"
+      },
+      {
+        "character": "Dinosaur 2 (Right)",
+        "species": "Tyrannosaurus Rex",
+        "style": "Friendly, rounded, high-fidelity 3D cartoon",
+        "color": "Orange skin with a creamy yellow underbelly",
+        "action": "Holding a blue frozen drink in the right hand and a green tropical drink in the left hand",
+        "expression": "Excited, wide open-mouthed smile"
+      }
+    ],
+    "background": {
+      "setting": "Busy urban pedestrian street (reminiscent of Times Square or a busy Tokyo district)",
+      "elements": [
+        "Brick buildings with fire escapes",
+        "Vertical neon signs with various colors (red, yellow, purple)",
+        "Crowds of people walking (soft focus/blurred for depth of field)"
+      ],
+      "lighting": "Daytime natural light mixed with the glow of neon signs",
+      "atmosphere": "Chaotic, vibrant, and energetic"
+    },
+    "style_parameters": {
+      "aesthetic": "Playful mix of cartoony characters in a semi-realistic, detailed environment",
+      "visual_tone": "Vibrant, saturated colors, cinematic lighting",
+      "camera_angle": "Eye-level, medium shot focusing on the characters from the waist up"
+    }
+  }
+}

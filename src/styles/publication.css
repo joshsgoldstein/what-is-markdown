@@ -512,3 +512,6 @@ main .page .article-body { padding:10px 0; }
 main .page .article-desc { font-size:15px; }
 main h1 em { color:inherit;font-style:normal; }
 @media(max-width:640px) { main .page .article-card { gap:16px; } }
+
+.subscribe-band .rss-subscribe { text-decoration:underline;white-space:nowrap; }
+@media(max-width:600px) { .publication-nav nav { gap:18px;flex-wrap:wrap; } }

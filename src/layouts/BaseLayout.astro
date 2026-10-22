@@ -1,17 +1,23 @@
 ---
 import '../styles/publication.css';
+import { publication, publicUrl } from '../lib/publication';
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  structuredData?: Record<string, unknown>;
 }
 const {
   title,
   description = 'Field notes for the AI age. From Lost In AI Land.',
   image = '/images/og-default.png',
 } = Astro.props;
-const siteUrl = 'https://joshsgoldstein.github.io/what-is-markdown';
-const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const ogImage = publicUrl(image);
+const canonical = new URL(Astro.url.pathname, Astro.site).href.replace(/\/?$/, '/');
+const structuredData = Astro.props.structuredData ?? {
+  '@context': 'https://schema.org', '@type': 'WebSite', name: publication.name,
+  url: publicUrl(), description: publication.description, inLanguage: 'en-US',
+};
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 ---
 
@@ -23,11 +29,18 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
   <title>{title}</title>
   <meta name="description" content={description} />
 
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" type="application/rss+xml" title="Lost In AI Land RSS" href={publicUrl('rss.xml')} />
+  <link rel="sitemap" type="application/xml" href={publicUrl('sitemap-index.xml')} />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\u003c')} />
+
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={Astro.props.structuredData ? "article" : "website"} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={publication.name} />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -41,15 +54,15 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="publication-header">
-    <div class="publication-utility"><a href={base}>Independent thinking. Practical understanding.</a><a href="https://lostinai.substack.com/">Subscribe on Substack ↗</a></div>
-    <a class="publication-masthead" href={base} aria-label="Lost In AI Land home">LOST IN AI LAND<span aria-hidden="true">✳</span></a>
-    <div class="publication-nav"><nav aria-label="Main navigation"><a href={`${base}articles`}>Articles</a><a href={`${base}cheatsheets`}>Cheatsheets</a><a href={`${base}tags`}>Explore topics</a></nav><span>Field notes for the AI age.</span></div>
+    <div class="publication-utility"><a href={base}>Independent thinking. Practical understanding.</a></div>
+    <a class="publication-masthead" href={base} aria-label="Lost In AI Land home">LOST IN AI LAND</a>
+    <div class="publication-nav"><nav aria-label="Main navigation"><a href={`${base}articles`}>Articles</a><a href={`${base}cheatsheets`}>Cheatsheets</a><a href={`${base}tags`}>Explore topics</a><a href={`${base}rss.xml`}>RSS</a></nav><span>Field notes for the AI age.</span></div>
   </header>
 
   <main id="main-content">
   <slot />
   </main>
-  <footer class="publication-footer"><div><a href={base}>Lost In AI Land ✳</a><p>Making sense of the tools changing how we work.</p></div><div><a href={`${base}articles`}>Read the articles ↗</a><a href="https://lostinai.substack.com/">Follow on Substack ↗</a><span>Written by Josh Goldstein</span></div></footer>
+  <footer class="publication-footer"><div><a href={base}>Lost In AI Land</a><p>Making sense of the tools changing how we work.</p></div><div><a href={`${base}articles`}>Read the articles &#8599;&#65038;</a><a href={`${base}rss.xml`}>Subscribe via RSS &#8599;&#65038;</a><a href={`${base}concepts/`}>Explore all six designs &#8599;&#65038;</a><span>Written by Josh Goldstein</span></div></footer>
 
 </body>
 </html>

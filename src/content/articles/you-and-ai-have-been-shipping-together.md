@@ -4,6 +4,7 @@ subtitle: "An overview of what Docker is and why it's the invisible infrastructu
 description: "AI agents are everywhere in 2026, writing code, deploying servers, and spinning up infrastructure on their own. But what's the machinery underneath making it possible? The answer is a technology that solved software's oldest problem: 'It works on my machine.'"
 date: 2026-03-14
 image: /images/articles/docker-hero.png
+imagePrompt: image-prompts/you-and-ai-have-been-shipping-together.json
 tags: [basics, Docker, AI]
 author: Josh
 ---
