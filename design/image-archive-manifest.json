@@ -1,0 +1,122 @@
+[
+  {
+    "path": "public/concept-art/01-illustrated-magazine.png",
+    "width": 1105,
+    "height": 1423,
+    "sha256": "5a0ca4e696901304a5abcec18c2c0b780dcc6eec933514ea1805ffea379d8580"
+  },
+  {
+    "path": "public/concept-art/01-magazine-live.png",
+    "width": 1440,
+    "height": 1753,
+    "sha256": "c430a4411ae3bc6083791d159ec658461d34cf864e99ff926c4e182dfe501c39"
+  },
+  {
+    "path": "public/concept-art/02-field-notebook.png",
+    "width": 1106,
+    "height": 1422,
+    "sha256": "c2c984c2462cdaeac168bfb090c0cf171e04c20e51ce02905b4b9d013f5b2a7a"
+  },
+  {
+    "path": "public/concept-art/02-notebook-live.png",
+    "width": 1440,
+    "height": 1679,
+    "sha256": "772d8cd326ba747d9d03ec461d16954badccb134d6a8cb69fb4d83ed4207868c"
+  },
+  {
+    "path": "public/concept-art/03-stories-live.png",
+    "width": 1440,
+    "height": 2588,
+    "sha256": "fea53cdd0c8f3e79870ced7ce2688dcd1ab59f5ab1112c2769b49a06ae366a22"
+  },
+  {
+    "path": "public/concept-art/03-visual-story-collection.png",
+    "width": 1106,
+    "height": 1422,
+    "sha256": "09f684312b212bd0a7ba5edc2755feac446be4b6385b6f880a4f95c263955f19"
+  },
+  {
+    "path": "public/concept-art/04-curiosity-cabinet.png",
+    "width": 1440,
+    "height": 1974,
+    "sha256": "5be775ecd706d717ef249dee039ad7790dcd015d071d7d8b62e15f01fa383052"
+  },
+  {
+    "path": "public/concept-art/05-pocket-guide.png",
+    "width": 1440,
+    "height": 2289,
+    "sha256": "2bfc8bad5387b76b88f7310733590eaa340dd60f97f8a2b892e1bfe8250d13f7"
+  },
+  {
+    "path": "public/concept-art/06-illustrated-atlas.png",
+    "width": 1440,
+    "height": 2219,
+    "sha256": "27788610272aa5e775cf0aed48c13e9733245a3d7daca48111e333ba9016d9d7"
+  },
+  {
+    "path": "public/images/articles/cli-hero.png",
+    "width": 1000,
+    "height": 600,
+    "sha256": "f33d4b1610b2f7cb2aa083db76f66c69e34e1b0748c7beb8176d0258c17fd8a2"
+  },
+  {
+    "path": "public/images/articles/docker-hero.png",
+    "width": 2816,
+    "height": 1536,
+    "sha256": "c0bbd2457e1e713ce1198ebb71c5cd654c5c8950b8a562c6036488c0674a18f9"
+  },
+  {
+    "path": "public/images/articles/docker-isolation-diagram.png",
+    "width": 2752,
+    "height": 1536,
+    "sha256": "2910f53bf94d2efc5503b80ba00da3d0d94a3952e153b19cba500d32a90c7519"
+  },
+  {
+    "path": "public/images/articles/git-hero.png",
+    "width": 1000,
+    "height": 600,
+    "sha256": "167c3534b2577b458908d9082c44ad0c73b3b21efdecb006c3241d52da15513e"
+  },
+  {
+    "path": "public/images/articles/markdown-hero.png",
+    "width": 512,
+    "height": 279,
+    "sha256": "fc1f7a4e1a18ee3438c84554bd15acbb1588045e7d9327a35efab6b7b472ce5f"
+  },
+  {
+    "path": "public/images/articles/markdown-raw-vs-rendered.png",
+    "width": 512,
+    "height": 279,
+    "sha256": "363a964e05c74131b63bbe889fb1faf7b01b9e39f785353daee941059321fe2e"
+  },
+  {
+    "path": "public/images/og-default.png",
+    "width": 512,
+    "height": 279,
+    "sha256": "f810ea9645abf2569553ea8a865a848119ca3fc4bb3e0870beae492123072e28"
+  },
+  {
+    "path": "design/png-exports/clean-header-preview.png",
+    "width": 1280,
+    "height": 720,
+    "sha256": "8379fe9e90f5df73668b8f59a93f33230fa5a156762afbd27bf28a8b03ae643e"
+  },
+  {
+    "path": "design/png-exports/desktop-preview.png",
+    "width": 1280,
+    "height": 2162,
+    "sha256": "1b07ac9369bfccdea590423949df9972f626a25b23afeffcc2110115c61b2524"
+  },
+  {
+    "path": "design/png-exports/mobile-preview.png",
+    "width": 390,
+    "height": 3830,
+    "sha256": "298affe2542ee23e6843d562c3734b703b4bb50822dd68e8f6bec62f38ee0622"
+  },
+  {
+    "path": "design/png-exports/subscriptions-preview.png",
+    "width": 1280,
+    "height": 720,
+    "sha256": "9ccb5788569be737a061ef34658026f620b779158aa7c47fc7492f2ba72cc663"
+  }
+]
