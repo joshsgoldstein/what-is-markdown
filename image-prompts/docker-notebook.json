@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/docker-notebook.png",
+  "reference_image": "public/concept-art/02-field-notebook.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": false,
+  "prompt": "Recreate ONLY the large annotated Docker hero illustration at upper right as standalone high-resolution landscape PNG, matching this notebook mockup. Friendly green T rex creamy belly blue cap backpack stepping out of blue container, cyan holographic baby triceratops headset floats beside it. White-background edges with lightly faded harbor/cargo-crane sunset scene. Polished 2D navy-outline cartoon. Keep small orange handwritten annotations and arrows: 'AI agent' points to triceratops, 'The container' points to blue container, 'Your code' points to boxes. No website UI, no article headlines or numbers. Full illustration fills 4:3 canvas with generous white edge, full-body dinosaurs.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

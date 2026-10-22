@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/docker-magazine.png",
+  "reference_image": "public/concept-art/01-illustrated-magazine.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": false,
+  "prompt": "Recreate ONLY the large Docker hero illustration at upper right of this website mockup as a standalone high-resolution landscape PNG illustration. No website UI or text, no typography. Match composition and character identity closely: friendly rounded green T rex creamy yellow belly wearing blue Docker cap and dark developer backpack with lightning/code/gear patches, stepping from open blue container, smiling holographic cyan baby triceratops with headset at right. Golden sunset harbor, cranes blue containers. Full-body dinosaurs visible. Strong navy outlines, polished 2D editorial cel shading. Use 4:3 composition filling canvas. No baked headlines. White Docker whale emblem on container allowed.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

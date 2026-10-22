@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/markdown.png",
+  "reference_image": "public/concept-art/01-illustrated-magazine.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": false,
+  "prompt": "Recreate ONLY the third small illustrated article cover under 'The field notes' (bottom right holographic baby triceratops reading Markdown book) as a standalone high-resolution 16:9 landscape PNG. Friendly turquoise glowing holographic baby triceratops with large eyes, three pale horns, circuit-pattern frill and headset, reading an open dark book with white Markdown M and down-arrow logo on cover. Cozy golden sunlit library, stacks of books, plants. Match polished 2D cartoon navy outlines, smooth cel shading, rich teal blue and warm golden colors. Fill canvas with illustration. No website UI, no headings or article captions.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

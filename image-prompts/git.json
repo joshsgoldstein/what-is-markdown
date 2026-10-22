@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/git.png",
+  "reference_image": "public/concept-art/01-illustrated-magazine.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": false,
+  "prompt": "Recreate ONLY the middle small illustrated article cover under 'The field notes' as a standalone high-resolution 16:9 landscape PNG. Close-up of friendly green dinosaur finger pressing a glowing orange Git key on a dark computer keyboard. White Git branching logo on the orange key, tiny warm sparks/light rays, nearby black esc and shift keys. Same polished 2D editorial cartoon, bold navy outlines, dimensional cel shading as this mockup. Fill canvas with the keyboard close-up. No website UI, no captions or article headlines.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

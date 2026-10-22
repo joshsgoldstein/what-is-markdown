@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/notebook-markdown.png",
+  "reference_image": "public/concept-art/02-field-notebook.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Recreate ONLY the small Markdown dinosaur pair illustration from the wide lower entry of the reference notebook website mockup as a standalone transparent-background PNG. Friendly green T rex with creamy golden belly, blue cap and dark developer backpack at left, cute glowing turquoise holographic baby triceratops with circuit-pattern frill, three pale horns and headset at right. They smile together and hold a white document sheet between them labeled '.md' in dark navy. A few small orange hand-drawn emphasis strokes. Isolated horizontal spot illustration, polished 2D navy outlines and cel shading, soft subtle ground shadow only. Landscape 16:9, keep both characters and document fully inside canvas. Transparent background, no website layout or article titles.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

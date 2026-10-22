@@ -29,3 +29,16 @@ with ZipFile(output, 'w', compression=ZIP_STORED) as archive:
 with ZipFile(output) as archive:
     assert archive.testzip() is None
 print(f'Archived {len(records)} unique PNGs, {output.stat().st_size:,} bytes. ZIP integrity verified.')
+
+# A small, easy-to-browse package specifically for the standalone illustrations.
+art_output = root / 'public/concept-art/standalone-dinosaur-artwork.zip'
+with ZipFile(art_output, 'w', compression=ZIP_STORED) as archive:
+    for path in sorted((root/'public/images/variants').glob('*.png')):
+        archive.write(path, path.name)
+        prompt = root/'image-prompts'/f'{path.stem}.json'
+        assert prompt.is_file(), f'Missing prompt for {path.name}'
+        archive.write(prompt, f'prompts/{prompt.name}')
+    archive.writestr('README.txt', 'Nine reusable standalone illustrations for Lost In AI Land.\n\nNotebook: docker-notebook.png plus notebook-cli.png, notebook-git.png, notebook-markdown.png. The three smaller notebook illustrations have transparent backgrounds.\nMagazine: docker-magazine.png plus cli.png, git.png, markdown.png.\nStories: docker-stories.png plus the same illustrated covers.\n\nEach matching JSON in prompts/ records the exact generation prompt, reference image, and transparency setting. Reference mockups remain in the full archive and repository. These assets can be reused directly. Original PNGs are preserved without recompression.\n')
+with ZipFile(art_output) as archive:
+    assert archive.testzip() is None
+print(f'Standalone artwork ZIP: {art_output.stat().st_size:,} bytes; integrity verified.')

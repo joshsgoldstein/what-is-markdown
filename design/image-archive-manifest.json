@@ -6,6 +6,12 @@
     "sha256": "5a0ca4e696901304a5abcec18c2c0b780dcc6eec933514ea1805ffea379d8580"
   },
   {
+    "path": "public/concept-art/01-magazine-live-v2.png",
+    "width": 1440,
+    "height": 1842,
+    "sha256": "67320c931acdabfcaec417790bb581d93fe35cf7e5d8a9a359a51a7f25e82a8c"
+  },
+  {
     "path": "public/concept-art/01-magazine-live.png",
     "width": 1440,
     "height": 1753,
@@ -18,10 +24,22 @@
     "sha256": "c2c984c2462cdaeac168bfb090c0cf171e04c20e51ce02905b4b9d013f5b2a7a"
   },
   {
+    "path": "public/concept-art/02-notebook-live-v2.png",
+    "width": 1440,
+    "height": 1904,
+    "sha256": "722a0245eb3f56c5edff3f5ae20d5ebfeea28435243e9f428d8d7cdf7baa9f34"
+  },
+  {
     "path": "public/concept-art/02-notebook-live.png",
     "width": 1440,
     "height": 1679,
     "sha256": "772d8cd326ba747d9d03ec461d16954badccb134d6a8cb69fb4d83ed4207868c"
+  },
+  {
+    "path": "public/concept-art/03-stories-live-v2.png",
+    "width": 1440,
+    "height": 2184,
+    "sha256": "e61491f455532eaf5d8c95bfa38090acecb9101355204a61d6e96d4024383687"
   },
   {
     "path": "public/concept-art/03-stories-live.png",
@@ -94,6 +112,60 @@
     "width": 512,
     "height": 279,
     "sha256": "f810ea9645abf2569553ea8a865a848119ca3fc4bb3e0870beae492123072e28"
+  },
+  {
+    "path": "public/images/variants/cli.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "eb29a732862b608c1e166c6abd6d8577230d13b59ce7a10fbf212ab5cb5b407b"
+  },
+  {
+    "path": "public/images/variants/docker-magazine.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "e49ecd4851c4edf7a5736d4249d3da8244ece22645fb487472970fcb4f564e80"
+  },
+  {
+    "path": "public/images/variants/docker-notebook.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "8b149819562a3a897a18490f0d71e7d3882b38f93e12c33d7261dedc560b8482"
+  },
+  {
+    "path": "public/images/variants/docker-stories.png",
+    "width": 1774,
+    "height": 887,
+    "sha256": "0d6f00f20ba5642c5944814c3ab4c3f2d9628186ce70ecacf239d1351c705ba1"
+  },
+  {
+    "path": "public/images/variants/git.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "7418984b06420c7e43ded32a2d8cfd2086ecc0b1becb8000cd084c3ec20b9ac2"
+  },
+  {
+    "path": "public/images/variants/markdown.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "82790f1224e0ae9c17f6508fda9776b76cdebdf1b1890d50292c4d1838f8ffb7"
+  },
+  {
+    "path": "public/images/variants/notebook-cli.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "141715c342e20f181411b23b8b398e325ab877d2071f2e56257901d0746b7ddb"
+  },
+  {
+    "path": "public/images/variants/notebook-git.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "b4de7bb643ab613334129367349c218593026fd49f32e246ae9758d03fec4c80"
+  },
+  {
+    "path": "public/images/variants/notebook-markdown.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "4e0f8ca03f33006c46235c0cac2a83345896d63c32412ac00a6c160d5d1acc02"
   },
   {
     "path": "design/png-exports/clean-header-preview.png",

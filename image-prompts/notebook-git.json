@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/notebook-git.png",
+  "reference_image": "public/concept-art/02-field-notebook.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Recreate ONLY the small Git dinosaur illustration from the right middle entry of the reference notebook website mockup as a standalone transparent-background PNG. Same friendly green T rex, creamy golden belly, blue cap with small white whale emblem, expressive eyes, dark backpack with yellow lightning/cyan code/purple gear patches. Full-body dinosaur standing and smiling, holding a large orange tilted diamond Git logo plaque with white branching symbol. A few small orange hand-drawn emphasis strokes. Isolated spot illustration, polished 2D navy outlines and cel shading, soft subtle ground shadow only. Landscape 4:3, keep full body including feet and plaque inside canvas. Transparent background, no website layout or article titles.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

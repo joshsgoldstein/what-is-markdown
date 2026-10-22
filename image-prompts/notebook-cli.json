@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/notebook-cli.png",
+  "reference_image": "public/concept-art/02-field-notebook.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Recreate ONLY the small command-line dinosaur illustration from the left middle entry of the reference notebook website mockup as a standalone transparent-background PNG. Same friendly green T rex, creamy golden belly, blue cap with small white whale emblem, expressive eyes, short arms, dark backpack. Dinosaur sitting happily behind an open dark laptop, a small dark floating terminal panel above and to the left shows three short monospace lines: '$ ls', '$ python', '$ uv run agent.py'. A few small orange hand-drawn emphasis strokes. Isolated spot illustration, polished 2D navy outlines and cel shading, soft subtle ground shadow only. Landscape 4:3, keep all dinosaur and terminal inside canvas. Transparent background, no website layout, no article titles, no border.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}

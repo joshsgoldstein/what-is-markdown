@@ -1,0 +1,8 @@
+{
+  "asset": "public/images/variants/cli.png",
+  "reference_image": "public/concept-art/01-illustrated-magazine.png",
+  "generation_method": "built-in image_gen",
+  "transparent_background": false,
+  "prompt": "Recreate ONLY the first small illustrated article cover under 'The field notes' (bottom-left dinosaur at command-line computer) as a standalone high-resolution landscape PNG, 16:9 composition. Match the mockup's friendly green T rex wearing blue Docker-style cap, creamy belly, expressive eyes, dark backpack straps, sitting at desk looking happily at a black computer terminal screen with bright green '$' and cursor. Warm evening workspace, bookshelves, plant, coffee mug, soft window light. Polished 2D cartoon with bold navy outlines, smooth cel shading, rich blue and amber colors. Fill entire canvas with this illustration. No website UI, no captions or headlines.",
+  "reuse": "Reusable standalone publication artwork. Supply the reference image and this prompt when generating related illustrations. Original mockups are retained separately."
+}
